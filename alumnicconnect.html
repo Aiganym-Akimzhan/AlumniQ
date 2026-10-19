@@ -1,0 +1,1411 @@
+<!doctype html>
+<html lang="kk">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AlumniConnect — Түлектердің колледжді қолдау платформасы</title>
+    <style>
+      :root {
+        --blue: #204b80;
+        --blue-dark: #17395f;
+        --red: #df3438;
+        --bg: #f3f5f8;
+        --ink: #172033;
+        --muted: #64748b;
+        --card: #fff;
+        --line: #e2e8f0;
+      }
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        font-family:
+          Inter,
+          system-ui,
+          -apple-system,
+          "Segoe UI",
+          sans-serif;
+        color: var(--ink);
+        background: var(--bg);
+        line-height: 1.6;
+      }
+      .container {
+        max-width: 1120px;
+        margin: auto;
+        padding: 0 20px;
+      }
+      header {
+        position: sticky;
+        top: 0;
+        background: var(--blue);
+        color: #fff;
+        z-index: 50;
+      }
+      .nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 70px;
+      }
+      nav {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+      }
+      nav a {
+        margin-left: 14px;
+      }
+      .logo {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        font-weight: 1000;
+        font-size: 30px;
+        font-family: Impact, "Arial Narrow", system-ui, sans-serif;
+      }
+      .logo span {
+        background: var(--blue);
+        color: #fff;
+        width: 38px;
+        height: 38px;
+        border-radius: 8px;
+        display: grid;
+        place-items: center;
+        font-weight: 900;
+        position: relative;
+      }
+      .logo span:after {
+        content: "";
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        background: var(--red);
+        border-radius: 50%;
+        right: -3px;
+        bottom: -2px;
+        border: 2px solid white;
+      }
+      header .logo span {
+        display: none;
+      }
+      nav a {
+        color: #fff;
+        text-decoration: none;
+        margin-left: 22px;
+        font-weight: 600;
+      }
+      nav a:hover {
+        color: var(--red);
+      }
+      .btn {
+        display: inline-block;
+        padding: 12px 20px;
+        border-radius: 12px;
+        text-decoration: none;
+        font-weight: 700;
+        border: 0;
+        cursor: pointer;
+      }
+      .btn-primary {
+        background: var(--blue);
+        color: #fff;
+      }
+      .btn-primary:hover {
+        background: var(--blue-dark);
+      }
+      .btn-outline {
+        border: 1.5px solid var(--blue);
+        color: var(--blue);
+        background: #fff;
+      }
+      header .btn-primary {
+        background: var(--red);
+      }
+      header .btn-outline {
+        color: #fff;
+        border-color: #fff;
+        background: transparent;
+      }
+      .hero {
+        padding: 80px 0 60px;
+        background: linear-gradient(180deg, #f7f7f5, #f3f5f8);
+      }
+      .hero-grid {
+        display: grid;
+        grid-template-columns: 1.1fr 0.9fr;
+        gap: 24px;
+        align-items: center;
+      }
+      .hero-grid > .card {
+        grid-column: 2;
+      }
+      .pill {
+        display: inline-block;
+        background: #e6edf6;
+        color: var(--blue);
+        padding: 6px 14px;
+        border-radius: 999px;
+        font-weight: 700;
+        font-size: 13px;
+      }
+      h1 {
+        font-size: 44px;
+        line-height: 1.15;
+        margin: 18px 0;
+      }
+      .lead {
+        color: var(--muted);
+        font-size: 19px;
+        max-width: 560px;
+      }
+      .cta {
+        display: flex;
+        gap: 12px;
+        margin-top: 28px;
+        flex-wrap: wrap;
+      }
+      .stats {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 14px;
+        margin-top: 36px;
+        max-width: 560px;
+      }
+      .stat {
+        background: #fff;
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        padding: 16px;
+      }
+      .stat b {
+        font-size: 24px;
+        color: var(--blue);
+      }
+      .card {
+        background: var(--card);
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        padding: 24px;
+        box-shadow: 0 10px 25px rgba(15, 23, 42, 0.05);
+      }
+      section {
+        padding: 70px 0;
+      }
+      h2 {
+        font-size: 32px;
+        margin-bottom: 12px;
+      }
+      .sub {
+        color: var(--muted);
+        max-width: 680px;
+        margin-bottom: 34px;
+      }
+      .grid3 {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+      }
+      .grid2 {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+      }
+      .icon {
+        width: 46px;
+        height: 46px;
+        border-radius: 12px;
+        background: #e6edf6;
+        display: grid;
+        place-items: center;
+        font-size: 22px;
+        margin-bottom: 14px;
+      }
+      .projects {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+      }
+      .project .bar {
+        height: 8px;
+        background: #e2e8f0;
+        border-radius: 99px;
+        overflow: hidden;
+        margin: 12px 0;
+      }
+      .project .bar i {
+        display: block;
+        height: 100%;
+        background: var(--blue);
+      }
+      .tag {
+        font-size: 12px;
+        font-weight: 700;
+        color: var(--blue);
+        background: #e6edf6;
+        padding: 4px 10px;
+        border-radius: 99px;
+      }
+      .amount {
+        font-weight: 800;
+      }
+      .steps {
+        counter-reset: s;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 18px;
+      }
+      .step {
+        background: #fff;
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        padding: 22px;
+      }
+      .step:before {
+        counter-increment: s;
+        content: counter(s);
+        display: grid;
+        place-items: center;
+        width: 34px;
+        height: 34px;
+        border-radius: 50%;
+        background: var(--blue);
+        color: #fff;
+        font-weight: 800;
+        margin-bottom: 12px;
+      }
+      form {
+        display: grid;
+        gap: 14px;
+        max-width: 520px;
+      }
+      input,
+      select {
+        width: 100%;
+        padding: 13px;
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        font: inherit;
+        background: #fff;
+      }
+      label {
+        font-weight: 600;
+        font-size: 14px;
+      }
+      footer {
+        background: #0f172a;
+        color: #cbd5e1;
+        padding: 45px 0;
+        margin-top: 30px;
+      }
+      footer a {
+        color: #99f6e4;
+        text-decoration: none;
+      }
+      .login-button {
+        margin-left: 12px;
+      }
+      .modal {
+        position: fixed;
+        inset: 0;
+        background: #101827aa;
+        display: none;
+        place-items: center;
+        z-index: 100;
+        padding: 18px;
+      }
+      .modal.open {
+        display: grid;
+      }
+      .modalbox {
+        background: #fff;
+        width: min(520px, 100%);
+        padding: 28px;
+        border-radius: 20px;
+        position: relative;
+        max-height: 90vh;
+        overflow: auto;
+      }
+      .close {
+        position: absolute;
+        right: 18px;
+        top: 14px;
+        border: 0;
+        background: none;
+        font-size: 25px;
+        cursor: pointer;
+      }
+      .notice {
+        background: #f1f5f9;
+        padding: 14px;
+        border-radius: 12px;
+        margin: 14px 0;
+      }
+      .admin-panel {
+        display: none;
+      }
+      .dashboard-panel {
+        display: none;
+      }
+      .dashboard-panel.visible {
+        display: block;
+      }
+      .admin-panel.visible {
+        display: block;
+      }
+      .brand-mark {
+        font-size: clamp(64px, 11vw, 125px);
+        font-weight: 1000;
+        letter-spacing: -0.08em;
+        line-height: 0.9;
+        color: white;
+        font-family: Impact, "Arial Narrow", system-ui, sans-serif;
+        transform: scaleX(0.88);
+        transform-origin: left center;
+      }
+      .brand-mark em {
+        color: var(--red);
+        font-style: normal;
+      }
+      .hero-poster {
+        background: linear-gradient(180deg, #f5f3ee 0 44%, #204b80 44%);
+        min-height: 330px;
+        border-radius: 4px;
+        padding: 32px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        box-shadow: 0 20px 40px #17203322;
+        position: relative;
+        overflow: hidden;
+      }
+      .hero-poster:before {
+        content: "ALUMNI • COLLEGE • FUTURE";
+        position: absolute;
+        top: 35px;
+        left: 25px;
+        color: #30333a;
+        font-size: 13px;
+        font-weight: 900;
+        letter-spacing: 0.18em;
+      }
+      .hero-poster:after {
+        content: "✦";
+        position: absolute;
+        top: 65px;
+        right: 22%;
+        font-size: 130px;
+        color: #bbb;
+        transform: rotate(-12deg);
+      }
+      .hero-poster small {
+        color: #fff;
+        position: absolute;
+        bottom: 125px;
+        left: 35px;
+        font-weight: 800;
+        max-width: 190px;
+      }
+      @media (max-width: 900px) {
+        .hero-grid,
+        .grid3,
+        .grid2,
+        .projects,
+        .steps {
+          grid-template-columns: 1fr;
+        }
+        .hero-grid > .card {
+          grid-column: 1;
+        }
+        .stats {
+          grid-template-columns: 1fr 1fr;
+        }
+        h1 {
+          font-size: 34px;
+        }
+        nav a {
+          margin-left: 4px;
+          font-size: 13px;
+        }
+        .nav {
+          height: auto;
+          min-height: 70px;
+          padding: 10px 0;
+        }
+        .login-button {
+          padding: 8px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="container nav">
+        <div class="logo">
+          Alumni
+          <em style="color: var(--red); font-style: normal">Q</em>
+        </div>
+        <nav>
+          <a href="#projects">Жобалар</a><a href="#transparency">Ашық есеп</a
+          ><a href="#community">Қауымдастық</a><a href="#about">Біз туралы</a
+          ><a href="#support" class="btn btn-primary">Қолдау көрсету</a
+          ><button class="btn btn-outline login-button" onclick="openLogin()">
+            Кіру
+          </button>
+        </nav>
+      </div>
+    </header>
+
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <span class="pill">Колледж түлектері үшін платформа</span>
+          <h1>Бүгінгі қолдау — ертеңгі мүмкіндік.</h1>
+          <p class="lead">
+            AlumniConnect түлектерге колледжді, студенттік бастамаларды және оқу
+            орнының дамуын ай сайын қаржылай қолдауға мүмкіндік береді. Әр
+            теңгенің қайда жұмсалғаны ашық көрсетіледі.
+          </p>
+          <div class="cta">
+            <a class="btn btn-primary" href="#support"
+              >Ай сайын қолдау көрсету</a
+            ><a class="btn btn-outline" href="#projects">Жобаларды көру</a>
+          </div>
+          <div class="stats">
+            <p style="grid-column: 1/-1; color: var(--muted); font-size: 12px">
+              Көрнекі демо сандары · нақты сомалар ашық есептерде көрсетіледі
+            </p>
+            <div class="stat">
+              <b>1 240+</b><br /><small>Тіркелген түлек</small>
+            </div>
+            <div class="stat">
+              <b>18</b><br /><small>Қолдау көрсетілген жоба</small>
+            </div>
+            <div class="stat">
+              <b>94%</b><br /><small>Ашық есеппен жұмсалған қаражат</small>
+            </div>
+          </div>
+        </div>
+        <div class="hero-poster">
+          <small>БІРГЕ ҚОЛДАЙМЫЗ,<br />БІРГЕ ДАМИМЫЗ!</small>
+          <div class="brand-mark">ALUMNI<em>Q</em></div>
+        </div>
+        <div class="card">
+          <h3>Сіздің айлық үлесіңіз</h3>
+          <p style="color: var(--muted); margin-bottom: 16px">
+            Мысал: айына 5 000 ₸ — студенттік шеберханаға жабдық сатып алуға
+            көмектеседі.
+          </p>
+          <div
+            style="
+              display: flex;
+              justify-content: space-between;
+              border-bottom: 1px solid var(--line);
+              padding: 10px 0;
+            "
+          >
+            <span>Жиналған қаражат</span><b>4 820 000 ₸</b>
+          </div>
+          <div
+            style="
+              display: flex;
+              justify-content: space-between;
+              border-bottom: 1px solid var(--line);
+              padding: 10px 0;
+            "
+          >
+            <span>Белсенді қолдаушылар</span><b>312</b>
+          </div>
+          <div
+            style="
+              display: flex;
+              justify-content: space-between;
+              padding: 10px 0;
+            "
+          >
+            <span>Аяқталған жобалар</span><b>11</b>
+          </div>
+          <a
+            class="btn btn-primary"
+            href="#support"
+            style="width: 100%; text-align: center; margin-top: 16px"
+            >Үлес қосу</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <section id="problem">
+      <div class="container">
+        <h2>Қандай мәселені шешеміз?</h2>
+        <p class="sub">
+          Қазір түлектердің колледждің дамуына тұрақты үлес қосуына арналған
+          бірыңғай әрі ыңғайлы жүйе жоқ.
+        </p>
+        <div class="grid2">
+          <div class="card">
+            <div class="icon">🔁</div>
+            <h3>Тұрақты аудару қиын</h3>
+            <p>
+              Түлектер қолдау көрсеткісі келсе де, ыңғайлы және автоматты төлем
+              жүйесі болмайды.
+            </p>
+          </div>
+          <div class="card">
+            <div class="icon">🔍</div>
+            <h3>Шығыстар көрінбейді</h3>
+            <p>
+              Қаражаттың нақты қайда жұмсалғанын бақылау мүмкіндігі шектеулі.
+            </p>
+          </div>
+          <div class="card">
+            <div class="icon">🎓</div>
+            <h3>Жобалар қолдау таппайды</h3>
+            <p>
+              Студенттік бастамалар мен қажеттіліктер туралы ақпарат түлектерге
+              жетпейді.
+            </p>
+          </div>
+          <div class="card">
+            <div class="icon">🤝</div>
+            <h3>Байланыс әлсіз</h3>
+            <p>
+              Колледж мен түлектер арасындағы тұрақты байланыс пен сенім
+              жеткіліксіз.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="how" style="background: #e8eef6">
+      <div class="container">
+        <h2>Қалай жұмыс істейді?</h2>
+        <p class="sub">
+          Төрт қарапайым қадам арқылы сіздің қолдауыңыз нақты нәтижеге айналады.
+        </p>
+        <div class="steps">
+          <div class="step">
+            <h3>Тіркелу</h3>
+            <p>Түлек ретінде профиль құрып, колледжіңізбен байланыссыз.</p>
+          </div>
+          <div class="step">
+            <h3>Жобаны таңдау</h3>
+            <p>
+              Студенттік бастама, жабдық, стипендия немесе инфрақұрылым жобасын
+              таңдаңыз.
+            </p>
+          </div>
+          <div class="step">
+            <h3>Ай сайын аудару</h3>
+            <p>Ыңғайлы соманы таңдап, автоматты айлық төлемді қосыңыз.</p>
+          </div>
+          <div class="step">
+            <h3>Нәтижені көру</h3>
+            <p>
+              Фото, есеп және жетістіктер арқылы қаражаттың нәтижесін бақылаңыз.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="container">
+        <h2>Қолдау көрсететін жобалар</h2>
+        <p class="sub">
+          Әр жобаның мақсаты, қажетті сомасы және ағымдағы жағдайы ашық
+          көрсетіледі.
+        </p>
+        <div
+          style="
+            display: flex;
+            gap: 12px;
+            max-width: 700px;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+          "
+        >
+          <input
+            id="projectSearch"
+            placeholder="Жоба іздеу…"
+            style="flex: 2; min-width: 220px"
+          /><select id="categoryFilter" style="flex: 1; min-width: 180px">
+            <option value="">Барлық санаттар</option>
+          </select>
+        </div>
+        <div class="projects">
+          <div class="card project">
+            <span class="tag">Студенттік бастама</span>
+            <h3>Робототехника шеберханасы</h3>
+            <p>
+              Студенттерге 3D-принтер, микроконтроллерлер және құрал-жабдық
+              сатып алу.
+            </p>
+            <div class="bar"><i style="width: 72%"></i></div>
+            <p><b>2 160 000 ₸</b> / 3 000 000 ₸</p>
+            <button
+              class="btn btn-outline"
+              onclick="donate('Робототехника шеберханасы')"
+            >
+              Қолдау көрсету
+            </button>
+          </div>
+          <div class="card project">
+            <span class="tag">Білім беру</span>
+            <h3>Мамандық бойынша стипендия</h3>
+            <p>Әлеуметтік осал студенттерге ай сайынғы оқу стипендиясы.</p>
+            <div class="bar"><i style="width: 45%"></i></div>
+            <p><b>900 000 ₸</b> / 2 000 000 ₸</p>
+            <button
+              class="btn btn-outline"
+              onclick="donate('Мамандық бойынша стипендия')"
+            >
+              Қолдау көрсету
+            </button>
+          </div>
+          <div class="card project">
+            <span class="tag">Инфрақұрылым</span>
+            <h3>Кітапхананы жаңарту</h3>
+            <p>
+              Оқу залын жаңарту, компьютерлер мен оқу әдебиеттерін сатып алу.
+            </p>
+            <div class="bar"><i style="width: 28%"></i></div>
+            <p><b>560 000 ₸</b> / 2 000 000 ₸</p>
+            <button
+              class="btn btn-outline"
+              onclick="donate('Кітапхананы жаңарту')"
+            >
+              Қолдау көрсету
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="transparency" style="background: #fff">
+      <div class="container">
+        <h2>Ашықтық — негізгі ерекшелігіміз</h2>
+        <p class="sub">
+          Нақты есептер серверде тіркелген расталған аударымдар мен жарияланған
+          есептерден алынады. Әр көмектің нәтижесін дәлелдейтін есептер мен
+          фотоматериалдар жарияланады.
+        </p>
+        <div class="grid3">
+          <div class="card">
+            <div class="icon">📊</div>
+            <h3>Нақты есеп</h3>
+            <p>
+              Әр жоба бойынша жиналған, жұмсалған және қалған қаражат
+              көрсетіледі.
+            </p>
+          </div>
+          <div class="card">
+            <div class="icon">🧾</div>
+            <h3>Құжаттар</h3>
+            <p>
+              Сатып алу құжаттары, шот-фактуралар және қабылдау-серуен актілері
+              сақталады.
+            </p>
+          </div>
+          <div class="card">
+            <div class="icon">📸</div>
+            <h3>Нәтиже</h3>
+            <p>
+              Жабдық орнатылғаннан кейінгі фото, студенттердің пікірі және
+              жетістіктер жарияланады.
+            </p>
+          </div>
+        </div>
+        <div id="transparencyData" class="grid3" style="margin-top: 22px"></div>
+      </div>
+    </section>
+
+    <section id="support">
+      <div class="container grid2" style="align-items: start">
+        <div>
+          <h2>Қолдау көрсетуді бастаңыз</h2>
+          <p class="sub">
+            Ай сайынғы қолдау сомасы мен жобаны таңдаңыз. Автоматты банк төлемі
+            қосылмаған: ай сайын өз банк қосымшаңыздан аударым жасаңыз.
+          </p>
+          <div class="card">
+            <p><b>Сіздің үлесіңіз:</b></p>
+            <p
+              style="font-size: 34px; font-weight: 800; color: var(--blue)"
+              id="preview"
+            >
+              5 000 ₸ / ай
+            </p>
+            <p style="color: var(--muted)">
+              Таңдалған бағыт:
+              <span id="chosen">Робототехника шеберханасы</span>
+            </p>
+          </div>
+        </div>
+        <div class="card">
+          <form
+            onsubmit="
+              event.preventDefault();
+              donate(document.getElementById('direction').value);
+            "
+          >
+            <label
+              >Аты-жөніңіз<input
+                type="text"
+                placeholder="Мысалы: Айгерім Серікқызы"
+                required
+            /></label>
+            <label
+              >Түлек болған жылы<input
+                type="number"
+                placeholder="2020"
+                min="1950"
+                max="2026"
+                required
+            /></label>
+            <label
+              >Ай сайынғы сомасы<select id="amount" onchange="update()">
+                <option>2 000</option>
+                <option selected>5 000</option>
+                <option>10 000</option>
+                <option>25 000</option>
+                <option>50 000</option>
+              </select></label
+            >
+            <label
+              >Қолдау бағыты<select id="direction" onchange="update()">
+                <option>Робототехника шеберханасы</option>
+                <option>Мамандық бойынша стипендия</option>
+                <option>Кітапхананы жаңарту</option>
+                <option>Колледждің жалпы даму қоры</option>
+              </select></label
+            >
+            <button class="btn btn-primary" type="submit">
+              Аудару жолын көру
+            </button>
+            <p style="font-size: 13px; color: var(--muted)">
+              Кез келген уақытта тоқтатуға немесе соманы өзгертуге болады.
+            </p>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section id="community" style="background: #e8eef6">
+      <div class="container">
+        <h2>Түлектер қауымдастығы</h2>
+        <p class="sub">
+          Колледж жаңалықтары, кездесулер және студенттерге тәлімгерлік ету
+          мүмкіндіктері.
+        </p>
+        <div class="card">
+          <h3>Қауымдастық жаңалықтары</h3>
+          <p>Жаңалықтар мен іс-шаралар туралы ақпарат жақында жарияланады.</p>
+        </div>
+      </div>
+    </section>
+    <section id="about">
+      <div class="container">
+        <h2>Біз туралы</h2>
+        <p class="sub">
+          AlumniConnect түлектер мен колледжді байланыстырып, қолдауды
+          студенттерге нақты мүмкіндікке айналдырады.
+        </p>
+      </div>
+    </section>
+
+    <footer>
+      <div class="container">
+        <div
+          style="
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 20px;
+          "
+        >
+          <div>
+            <div class="logo" style="color: #fff">
+              <span>A</span>AlumniQ
+            </div>
+            <p style="margin-top: 10px; max-width: 380px">
+              Түлектер мен колледжді байланыстыратын, қаржыны ашық басқаратын
+              қолдау платформасы.
+            </p>
+          </div>
+          <div>
+            <p><b>Байланыс</b></p>
+            <p>info@alumnicconnect.kz<br />+7 (700) 000-00-00</p>
+          </div>
+          <div>
+            <p><b>Бөлімдер</b></p>
+            <p>
+              <a href="#projects">Жобалар</a><br /><a href="#transparency"
+                >Ашықтық</a
+              ><br /><a href="#support">Қолдау</a>
+            </p>
+          </div>
+        </div>
+        <p style="margin-top: 25px; font-size: 13px">
+          © 2026 AlumniConnect. Барлық құқықтар қорғалған.
+        </p>
+      </div>
+    </footer>
+    <div
+      class="modal"
+      id="accountModal"
+      onclick="if (event.target === this) closeBox('accountModal');"
+    >
+      <div class="modalbox">
+        <button class="close" onclick="closeBox('accountModal')">×</button>
+        <h2>Жеке кабинетке кіру</h2>
+        <form
+          onsubmit="
+            event.preventDefault();
+            enterAccount();
+          "
+        >
+          <label
+            >Email<input
+              type="email"
+              required
+              placeholder="name@example.kz" /></label
+          ><label
+            >Құпиясөз<input
+              id="loginPassword"
+              type="password"
+              minlength="8"
+              required /></label
+          ><label
+            >Аты-жөні (тек тіркелу үшін)<input
+              id="registerName"
+              placeholder="Айгерім Серікқызы" /></label
+          ><label
+            >Бітірген жылы (тек тіркелу үшін)<input
+              id="gradYear"
+              type="number"
+              min="1950"
+              max="2026"
+          /></label>
+          <div style="display: flex; gap: 10px">
+            <button
+              class="btn btn-primary"
+              type="button"
+              onclick="authAccount('login')"
+            >
+              Кіру</button
+            ><button
+              class="btn btn-outline"
+              type="button"
+              onclick="authAccount('register')"
+            >
+              Тіркелу
+            </button>
+          </div>
+        </form>
+        <p class="sub" style="margin-top: 12px">
+          Демо нұсқа: тіркелу және кіру симуляциясы.
+        </p>
+      </div>
+    </div>
+    <div
+      class="modal"
+      id="donateModal"
+      onclick="if (event.target === this) closeBox('donateModal');"
+    >
+      <div class="modalbox">
+        <button class="close" onclick="closeBox('donateModal')">×</button>
+        <h2>Аударым деректері</h2>
+        <p class="sub">Өз банк қосымшаңыздан аударыңыз.</p>
+        <div class="notice">
+          <b>Алушы:</b> Колледждің Alumni қоры<br /><b>Телефон нөмірі:</b>
+          <strong>+7 700 000 00 00</strong><br /><b>Мақсаты:</b>
+          <span id="purpose"></span><br /><b>Сома:</b>
+          <span id="donationAmount"></span>
+        </div>
+        <p>
+          Төлем сипаттамасында жоба атауын көрсетіп, түбіртекті сақтаңыз. Айлық
+          қолдауды жалғастыру үшін аударымды ай сайын қолмен жасаңыз; автоматты
+          төлем қосылмаған.
+        </p>
+      </div>
+    </div>
+    <div
+      class="modal"
+      id="projectModal"
+      onclick="if (event.target === this) closeBox('projectModal');"
+    >
+      <div class="modalbox">
+        <button class="close" onclick="closeBox('projectModal')">×</button
+        ><span class="tag" id="detailCategory"></span>
+        <h2 id="detailTitle" style="margin-top: 12px"></h2>
+        <p id="detailDescription"></p>
+        <div class="notice" id="detailFunding"></div>
+        <h3>Бюджет және жаңартулар</h3>
+        <div id="detailReports"></div>
+        <button
+          class="btn btn-primary"
+          id="detailSupport"
+          style="margin-top: 14px"
+        >
+          Осы жобаны қолдау
+        </button>
+      </div>
+    </div>
+    <section id="admin" class="admin-panel">
+      <div class="container">
+        <h2>Әкімші панелі</h2>
+        <p class="sub">
+          Жоба шығыстары мен орындалған жұмыстар туралы есепті жариялау.
+        </p>
+        <div class="card">
+          <form
+            onsubmit="
+              event.preventDefault();
+              saveReport();
+            "
+          >
+            <label>Жоба<select id="rp" required></select></label
+            ><label>Есеп / орындалған жұмыс<input id="rt" required /></label
+            ><label>Шығын сомасы<input id="ra" type="number" required /></label
+            ><button class="btn btn-primary">Жариялау</button>
+          </form>
+          <div id="reportList"></div>
+        </div>
+        <div class="grid2" style="margin-top: 20px">
+          <div class="card">
+            <h3>Жоба қосу</h3>
+            <form
+              onsubmit="
+                event.preventDefault();
+                createProject();
+              "
+            >
+              <label>Атауы<input id="newTitle" required /></label
+              ><label>Санат<input id="newCategory" required /></label
+              ><label>Сипаттамасы<input id="newDescription" required /></label
+              ><label
+                >Мақсат сомасы<input
+                  id="newGoal"
+                  type="number"
+                  min="1"
+                  required /></label
+              ><label>Мерзімі<input id="newDeadline" type="date" /></label
+              ><button class="btn btn-primary">Жобаны жариялау</button>
+            </form>
+          </div>
+          <div class="card">
+            <h3>Түскен аударымдар</h3>
+            <div id="donationList"></div>
+          </div>
+        </div>
+        <div class="card" style="margin-top: 20px">
+          <h3>Жобаларды басқару</h3>
+          <div id="adminProjectList"></div>
+        </div>
+      </div>
+    </section>
+    <section id="userDashboard" class="dashboard-panel">
+      <div class="container">
+        <h2>Жеке кабинет</h2>
+        <div id="profileInfo" class="card"></div>
+        <h3 style="margin: 22px 0 12px">Қолдау тарихы</h3>
+        <div id="historyList" class="grid2"></div>
+      </div>
+    </section>
+    <script>
+      function update() {
+        document.getElementById("preview").textContent =
+          document.getElementById("amount").value + " ₸ / ай";
+        document.getElementById("chosen").textContent =
+          document.getElementById("direction").value;
+      }
+      function openLogin() {
+        document.getElementById("accountModal").classList.add("open");
+      }
+      function closeBox(id) {
+        document.getElementById(id).classList.remove("open");
+      }
+      function donate(name) {
+        document.getElementById("purpose").textContent = name;
+        const amount = Number(
+          document.getElementById("amount").value.replace(/\D/g, ""),
+        );
+        const donor = document.querySelector(
+          '#support input[type="text"]',
+        ).value;
+        const matching = [...document.querySelectorAll(".project h3")].find(
+          (h) => h.textContent.trim() === name,
+        );
+        const projectId = matching?.closest(".project")?.dataset.projectId;
+        fetch("/api/donations", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            ...(localStorage.getItem("alumniToken")
+              ? {
+                  Authorization:
+                    "Bearer " + localStorage.getItem("alumniToken"),
+                }
+              : {}),
+          },
+          body: JSON.stringify({
+            project_id: projectId || null,
+            amount,
+            period: "monthly",
+            donor_name: donor || "Қонақ түлек",
+          }),
+        })
+          .then(async (r) => {
+            const data = await r.json();
+            if (!r.ok) throw Error(data.error || "Қате");
+            document.getElementById("donationAmount").textContent =
+              amount.toLocaleString("ru-RU") + " ₸ / ай";
+            document.querySelector("#donateModal .notice strong").textContent =
+              data.transfer_phone;
+            document.getElementById("donateModal").classList.add("open");
+          })
+          .catch((e) =>
+            alert(
+              "Аударым өтінімі сақталмады: " +
+                e.message +
+                ". Сайт серверін іске қосыңыз.",
+            ),
+          );
+      }
+      async function authAccount(mode) {
+        const email = document.querySelector(
+            '#accountModal input[type="email"]',
+          ).value,
+          password = document.getElementById("loginPassword").value;
+        const body = { email, password };
+        if (mode === "register") {
+          body.name = document.getElementById("registerName").value;
+          body.graduation_year =
+            Number(document.getElementById("gradYear").value) || null;
+        }
+        try {
+          const r = await fetch("/api/auth/" + mode, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(body),
+          });
+          const d = await r.json();
+          if (!r.ok) throw Error(d.error || "Кіру қатесі");
+          localStorage.setItem("alumniToken", d.token);
+          localStorage.setItem("alumniUser", JSON.stringify(d.user));
+          closeBox("accountModal");
+          if (d.user.role === "admin") {
+            document.getElementById("admin").classList.add("visible");
+            loadDonations();
+            loadReports();
+            document
+              .getElementById("admin")
+              .scrollIntoView({ behavior: "smooth" });
+          } else {
+            alert("Қош келдіңіз, " + d.user.name + "!");
+            loadDashboard();
+          }
+        } catch (e) {
+          alert(e.message + " (Сервер мен PostgreSQL қосылымын тексеріңіз.)");
+        }
+      }
+      async function saveReport() {
+        try {
+          const r = await fetch("/api/reports", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: "Bearer " + localStorage.getItem("alumniToken"),
+            },
+            body: JSON.stringify({
+              project_id: Number(rp.value),
+              title: "Шығын есебі",
+              details: rt.value,
+              expense_amount: Number(ra.value),
+            }),
+          });
+          const d = await r.json();
+          if (!r.ok) throw Error(d.error || "Қате");
+          document.querySelector("#admin form").reset();
+          loadReports();
+        } catch (e) {
+          alert(e.message);
+        }
+      }
+      async function loadDashboard() {
+        try {
+          const r = await fetch("/api/dashboard", {
+            headers: {
+              Authorization: "Bearer " + localStorage.getItem("alumniToken"),
+            },
+          });
+          const d = await r.json(),
+            user = JSON.parse(localStorage.getItem("alumniUser") || "{}");
+          document.getElementById("profileInfo").textContent =
+            `${user.name || ""} · ${user.email || ""} · Қолдау сомасы: ${Number(d.total).toLocaleString("ru-RU")} ₸`;
+          document.getElementById("historyList").innerHTML =
+            d.donations
+              .map(
+                (x) =>
+                  `<div class="card"><b>${x.project_title || "Жалпы қор"}</b><p>${Number(x.amount).toLocaleString("ru-RU")} ₸ ${x.period === "monthly" ? "/ ай" : ""}</p><small>${new Date(x.created_at).toLocaleDateString("kk-KZ")} · ${x.status}</small></div>`,
+              )
+              .join("") || "<p>Әзірге аударым жоқ.</p>";
+          document.getElementById("userDashboard").classList.add("visible");
+          document
+            .getElementById("userDashboard")
+            .scrollIntoView({ behavior: "smooth" });
+        } catch (e) {
+          alert("Жеке кабинет мәліметін алу мүмкін болмады");
+        }
+      }
+      async function loadReports() {
+        try {
+          const rows = await fetch("/api/transparency").then((r) => r.json());
+          reportList.innerHTML = rows
+            .flatMap((p) =>
+              (p.reports || []).map(
+                (x) =>
+                  `<div class="notice"><b>${p.title}: ${x.title}</b><br>${x.details}<br>Шығын: ${Number(x.amount).toLocaleString("ru-RU")} ₸ ${x.verified ? "✓ расталған" : `• тексерілуде <button class="btn btn-outline" onclick="verifyReport(${x.id})">Растау</button>`}</div>`,
+              ),
+            )
+            .join("");
+        } catch {}
+      }
+      async function verifyReport(id) {
+        try {
+          const r = await fetch("/api/reports/" + id + "/verify", {
+            method: "PATCH",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: "Bearer " + localStorage.getItem("alumniToken"),
+            },
+            body: JSON.stringify({ verified: true }),
+          });
+          if (!r.ok) throw Error("Есепті растау мүмкін болмады");
+          loadReports();
+          loadTransparency();
+        } catch (e) {
+          alert(e.message);
+        }
+      }
+      async function createProject() {
+        try {
+          const r = await fetch("/api/projects", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: "Bearer " + localStorage.getItem("alumniToken"),
+            },
+            body: JSON.stringify({
+              title: newTitle.value,
+              category: newCategory.value,
+              description: newDescription.value,
+              goal: Number(newGoal.value),
+              deadline: newDeadline.value || null,
+            }),
+          });
+          const d = await r.json();
+          if (!r.ok) throw Error(d.error || "Қате");
+          document.querySelector("#admin .grid2 form").reset();
+          loadProjects();
+        } catch (e) {
+          alert(e.message);
+        }
+      }
+      async function loadDonations() {
+        try {
+          const rows = await fetch("/api/admin/donations", {
+            headers: {
+              Authorization: "Bearer " + localStorage.getItem("alumniToken"),
+            },
+          }).then((r) => r.json());
+          donationList.innerHTML = rows
+            .map(
+              (d) =>
+                `<div class="notice"><b>${d.donor_name}</b> — ${Number(d.amount).toLocaleString("ru-RU")} ₸<br>${d.project_title || "Жалпы қор"} · ${d.status}<br>${d.status === "pledged" ? `<button class="btn btn-outline" onclick="confirmDonation(${d.id})">Түбіртекті растау</button>` : ""}</div>`,
+            )
+            .join("");
+        } catch {}
+      }
+      async function confirmDonation(id) {
+        try {
+          await fetch("/api/admin/donations/" + id, {
+            method: "PATCH",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: "Bearer " + localStorage.getItem("alumniToken"),
+            },
+            body: JSON.stringify({ status: "confirmed" }),
+          });
+          loadDonations();
+          loadProjects();
+        } catch {}
+      }
+      async function loadProjects() {
+        try {
+          const projects = await fetch("/api/projects").then((r) => r.json());
+          const host = document.querySelector(".projects"),
+            selector = document.getElementById("rp"),
+            categoryFilter = document.getElementById("categoryFilter"),
+            direction = document.getElementById("direction");
+          host.innerHTML = "";
+          selector.innerHTML = "";
+          direction.innerHTML = "";
+          const categories = [...new Set(projects.map((p) => p.category))];
+          categoryFilter.innerHTML =
+            '<option value="">Барлық санаттар</option>' +
+            categories.map((c) => `<option></option>`).join("");
+          [...categoryFilter.options]
+            .slice(1)
+            .forEach((o, i) => (o.textContent = categories[i] || ""));
+          const manage = document.getElementById("adminProjectList");
+          if (manage) manage.innerHTML = "";
+          for (const p of projects) {
+            const option = document.createElement("option");
+            option.value = p.id;
+            option.textContent = p.title;
+            selector.append(option);
+            const dir = document.createElement("option");
+            dir.value = p.title;
+            dir.textContent = p.title;
+            direction.append(dir);
+            const pct = Math.min(
+              100,
+              Math.round((Number(p.raised) * 100) / Number(p.goal)),
+            );
+            const card = document.createElement("article");
+            card.className = "card project";
+            card.dataset.projectId = p.id;
+            card.dataset.category = p.category;
+            card.dataset.search = (p.title + " " + p.description).toLowerCase();
+            card.innerHTML =
+              '<span class="tag"></span><h3></h3><p></p><div class="bar"><i></i></div><p class="funding"></p><button class="btn btn-outline details">Толығырақ</button> <button class="btn btn-primary support">Қолдау</button>';
+            card.querySelector(".tag").textContent = p.category;
+            card.querySelector("h3").textContent = p.title;
+            card.querySelector("p").textContent = p.description;
+            card.querySelector(".bar i").style.width = pct + "%";
+            card.querySelector(".funding").textContent =
+              Number(p.raised).toLocaleString("ru-RU") +
+              " ₸ / " +
+              Number(p.goal).toLocaleString("ru-RU") +
+              " ₸";
+            card.querySelector(".support").onclick = () => donate(p.title);
+            card.querySelector(".details").onclick = () => projectDetails(p.id);
+            host.append(card);
+            if (manage) {
+              const row = document.createElement("div");
+              row.className = "notice";
+              row.innerHTML =
+                '<b></b> <button class="btn btn-outline">Өңдеу</button>';
+              row.querySelector("b").textContent = p.title + " · " + p.status;
+              row.querySelector("button").onclick = () => editProject(p.id);
+              manage.append(row);
+            }
+          }
+          document.getElementById("projectSearch").oninput = filterProjects;
+          categoryFilter.onchange = filterProjects;
+          update();
+        } catch (e) {
+          console.warn("Projects API unavailable", e);
+        }
+      }
+      function filterProjects() {
+        const term = document
+            .getElementById("projectSearch")
+            .value.toLowerCase(),
+          category = document.getElementById("categoryFilter").value;
+        document
+          .querySelectorAll(".projects .project")
+          .forEach(
+            (c) =>
+              (c.hidden =
+                (!!category && c.dataset.category !== category) ||
+                !c.dataset.search.includes(term)),
+          );
+      }
+      async function editProject(id) {
+        try {
+          const p = await fetch("/api/projects/" + id).then((r) => r.json()),
+            title = prompt("Жоба атауы", p.title);
+          if (title === null) return;
+          const goal = prompt("Мақсат сомасы (₸)", p.goal),
+            status = prompt("Мәртебесі: active / completed / paused", p.status);
+          const r = await fetch("/api/projects/" + id, {
+            method: "PATCH",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: "Bearer " + localStorage.getItem("alumniToken"),
+            },
+            body: JSON.stringify({ title, goal: Number(goal), status }),
+          });
+          const d = await r.json();
+          if (!r.ok) throw Error(d.error || "Қате");
+          loadProjects();
+        } catch (e) {
+          alert(e.message);
+        }
+      }
+      async function projectDetails(id) {
+        try {
+          const p = await fetch("/api/projects/" + id).then((r) => r.json());
+          document.getElementById("detailCategory").textContent = p.category;
+          document.getElementById("detailTitle").textContent = p.title;
+          document.getElementById("detailDescription").textContent =
+            p.description;
+          document.getElementById("detailFunding").textContent =
+            "Жиналды: " +
+            Number(p.raised).toLocaleString("ru-RU") +
+            " ₸ / " +
+            Number(p.goal).toLocaleString("ru-RU") +
+            " ₸ · Мерзімі: " +
+            (p.deadline || "көрсетілмеген");
+          document.getElementById("detailReports").innerHTML =
+            (p.reports || [])
+              .map(
+                (x) =>
+                  `<div class="notice"><b>${x.title}</b><br>${x.details}<br>${x.verified ? "Расталған есеп" : "Тексерілуде"}</div>`,
+              )
+              .join("") || "<p>Есептер әзірге жоқ.</p>";
+          document.getElementById("detailSupport").onclick = () => {
+            closeBox("projectModal");
+            donate(p.title);
+          };
+          document.getElementById("projectModal").classList.add("open");
+        } catch (e) {
+          alert("Жоба мәліметі алынбады");
+        }
+      }
+      async function loadTransparency() {
+        try {
+          const rows = await fetch("/api/transparency").then((r) => r.json()),
+            host = document.getElementById("transparencyData");
+          let raised = 0,
+            spent = 0;
+          for (const p of rows) {
+            raised += Number(p.raised);
+            spent += Number(p.spent);
+          }
+          host.innerHTML =
+            `<div class="card"><b>Түскен қаражат</b><h2>${raised.toLocaleString("ru-RU")} ₸</h2></div><div class="card"><b>Расталған шығындар</b><h2>${spent.toLocaleString("ru-RU")} ₸</h2></div><div class="card"><b>Қолжетімді қалдық</b><h2>${(raised - spent).toLocaleString("ru-RU")} ₸</h2></div>` +
+            rows
+              .map(
+                (p) =>
+                  `<div class="card"><h3>${p.title}</h3><p>Түскені: ${Number(p.raised).toLocaleString("ru-RU")} ₸</p><p>Жұмсалғаны: ${Number(p.spent).toLocaleString("ru-RU")} ₸</p><p>Қалғаны: ${(Number(p.raised) - Number(p.spent)).toLocaleString("ru-RU")} ₸</p></div>`,
+              )
+              .join("");
+        } catch (e) {
+          console.warn("Transparency API unavailable", e);
+        }
+      }
+      loadProjects();
+      loadReports();
+      loadDonations();
+      loadTransparency();
+    </script>
+  </body>
+</html>
